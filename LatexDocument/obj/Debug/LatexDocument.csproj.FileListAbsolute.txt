@@ -1,0 +1,14 @@
+C:\Users\Matteo\documents\visual studio 2015\Projects\LatexTest\LatexDocument\bin\Debug\LatexDocument.dll
+C:\Users\Matteo\documents\visual studio 2015\Projects\LatexTest\LatexDocument\bin\Debug\LatexDocument.pdb
+C:\Users\Matteo\documents\visual studio 2015\Projects\LatexTest\LatexDocument\obj\Debug\LatexDocument.dll
+C:\Users\Matteo\documents\visual studio 2015\Projects\LatexTest\LatexDocument\obj\Debug\LatexDocument.pdb
+C:\Users\Matteo\documents\visual studio 2015\Projects\LatexTest\LatexDocument\obj\Debug\LatexDocument.csprojResolveAssemblyReference.cache
+C:\Users\Matteo\Documents\Visual Studio 2015\Projects\LatexDocumentExample\LatexDocument\bin\Debug\LatexDocument.dll
+C:\Users\Matteo\Documents\Visual Studio 2015\Projects\LatexDocumentExample\LatexDocument\bin\Debug\LatexDocument.pdb
+C:\Users\Matteo\Documents\Visual Studio 2015\Projects\LatexDocumentExample\LatexDocument\obj\Debug\LatexDocument.dll
+C:\Users\Matteo\Documents\Visual Studio 2015\Projects\LatexDocumentExample\LatexDocument\obj\Debug\LatexDocument.pdb
+C:\Users\Matteo\Documents\Visual Studio 2015\Projects\LatexDocument\LatexDocument\bin\Debug\LatexDocument.dll
+C:\Users\Matteo\Documents\Visual Studio 2015\Projects\LatexDocument\LatexDocument\bin\Debug\LatexDocument.pdb
+C:\Users\Matteo\Documents\Visual Studio 2015\Projects\LatexDocument\LatexDocument\obj\Debug\LatexDocument.csprojResolveAssemblyReference.cache
+C:\Users\Matteo\Documents\Visual Studio 2015\Projects\LatexDocument\LatexDocument\obj\Debug\LatexDocument.dll
+C:\Users\Matteo\Documents\Visual Studio 2015\Projects\LatexDocument\LatexDocument\obj\Debug\LatexDocument.pdb

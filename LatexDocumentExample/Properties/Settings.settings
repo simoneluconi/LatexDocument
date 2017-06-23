@@ -1,0 +1,9 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="LatexTest.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="LoremIpsum" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec orci tortor, tempus at vulputate vel, cursus vitae quam. Aliquam tincidunt eget odio id posuere. Donec rhoncus consectetur erat, sed tempus erat interdum a. Aliquam dictum imperdiet massa non vestibulum. Quisque rutrum ligula non nisl maximus fringilla. Proin condimentum fermentum accumsan. Morbi venenatis eros sed mi fermentum efficitur. Donec auctor, diam nec gravida egestas, magna libero interdum enim, at venenatis justo libero sed lectus. Nullam lectus nibh, porttitor ut turpis cursus, eleifend iaculis augue. Vivamus mollis, eros nec sagittis accumsan, quam ipsum hendrerit erat, eget fringilla ante nunc sed metus. Sed hendrerit dui ut ultrices faucibus. Nulla velit turpis, pretium a nibh sit amet, dapibus suscipit magna. Sed feugiat a sapien vitae pellentesque. Nam et dolor nec magna ultrices lobortis. Nulla gravida lobortis magna bibendum volutpat.</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
