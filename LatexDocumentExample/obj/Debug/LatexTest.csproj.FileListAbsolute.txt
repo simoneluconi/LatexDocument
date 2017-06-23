@@ -1,0 +1,11 @@
+c:\users\matteo\documents\visual studio 2015\Projects\LatexTest\LatexTest\bin\Debug\LatexTest.exe.config
+c:\users\matteo\documents\visual studio 2015\Projects\LatexTest\LatexTest\bin\Debug\LatexTest.exe
+c:\users\matteo\documents\visual studio 2015\Projects\LatexTest\LatexTest\bin\Debug\LatexTest.pdb
+c:\users\matteo\documents\visual studio 2015\Projects\LatexTest\LatexTest\obj\Debug\LatexTest.Form1.resources
+c:\users\matteo\documents\visual studio 2015\Projects\LatexTest\LatexTest\obj\Debug\LatexTest.Properties.Resources.resources
+c:\users\matteo\documents\visual studio 2015\Projects\LatexTest\LatexTest\obj\Debug\LatexTest.csproj.GenerateResource.Cache
+c:\users\matteo\documents\visual studio 2015\Projects\LatexTest\LatexTest\obj\Debug\LatexTest.exe
+c:\users\matteo\documents\visual studio 2015\Projects\LatexTest\LatexTest\obj\Debug\LatexTest.pdb
+C:\Users\Matteo\documents\visual studio 2015\Projects\LatexTest\LatexTest\obj\Debug\LatexTest.csprojResolveAssemblyReference.cache
+C:\Users\Matteo\documents\visual studio 2015\Projects\LatexTest\LatexTest\bin\Debug\LatexDocument.dll
+C:\Users\Matteo\documents\visual studio 2015\Projects\LatexTest\LatexTest\bin\Debug\LatexDocument.pdb
