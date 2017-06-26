@@ -11,6 +11,9 @@ namespace LatexDocument
         private string FILE_FOLDER;
         private string IMAGE_FOLDER;
         private string LATEX_EXECUTABLE;
+        private string _font;
+
+        public static string DEFAULT_FONT = "garamond";
 
         private LatexDocumentMargins Margins;
         private List<string> LatexPackages;
@@ -95,6 +98,32 @@ namespace LatexDocument
         }
 
         /// <summary>
+        /// Document font
+        /// </summary>
+        public string Font
+        {
+            get
+            {
+                return _font;
+            }
+
+            set
+            {
+                if (value != null)
+                {
+                    _font = value;
+                    sb.AppendLine(string.Format(@"\fontfamily{{{0}}}", value));
+                    sb.AppendLine(@"\selectfont");
+                } else
+                {
+                    _font = "garamond";
+                    sb.AppendLine(string.Format(@"\fontfamily{{{0}}}", "garamond"));
+                    sb.AppendLine(@"\selectfont");
+                }
+            }
+        }
+
+        /// <summary>
         /// Start a container with the center align
         /// </summary>
         public void StartCenterAlign()
@@ -109,7 +138,7 @@ namespace LatexDocument
         {
             sb.AppendLine(@"\end{center}");
         }
-   
+
         /// <summary>
         /// Add a LatexPageTitle object to the document
         /// </summary>
@@ -279,6 +308,9 @@ namespace LatexDocument
         /// <param name="Graph">LatexPieGraph object to be added to the document</param>
         public void Add(LatexPieGraph Graph)
         {
+            if (Graph.Centered)
+                StartCenterAlign();
+
             sb.AppendLine(@"\begin{tikzpicture}");
 
             int Total = 0;
@@ -307,6 +339,9 @@ namespace LatexDocument
             else
                 sb.AppendLine(@"\pie{" + datas + "}");
             sb.AppendLine(@"\end{tikzpicture}");
+
+            if (Graph.Centered)
+                EndAlign();
         }
 
         /// <summary>
@@ -315,6 +350,9 @@ namespace LatexDocument
         /// <param name="Graph">LatexBarGraph object to be added to the document</param>
         public void Add(LatexBarGraph Graph)
         {
+            if (Graph.Centered)
+                StartCenterAlign();
+
             sb.AppendLine(@"\begin{tikzpicture}");
             sb.AppendLine(@"\begin{axis}[");
             sb.AppendLine(@"symbolic x coords={");
@@ -336,6 +374,9 @@ namespace LatexDocument
             sb.AppendLine(@"};");
             sb.AppendLine(@"\end{axis}");
             sb.AppendLine(@"\end{tikzpicture}");
+
+            if (Graph.Centered)
+                EndAlign();
         }
 
         /// <summary>

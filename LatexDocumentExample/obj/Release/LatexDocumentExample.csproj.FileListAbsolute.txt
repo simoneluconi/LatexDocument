@@ -1,0 +1,13 @@
+C:\Users\Matteo\Documents\Visual Studio 2015\Projects\LatexDocument\LatexDocumentExample\bin\Release\LatexDocumentExample.exe.config
+C:\Users\Matteo\Documents\Visual Studio 2015\Projects\LatexDocument\LatexDocumentExample\bin\Release\LatexDocumentExample.exe
+C:\Users\Matteo\Documents\Visual Studio 2015\Projects\LatexDocument\LatexDocumentExample\bin\Release\LatexDocumentExample.pdb
+C:\Users\Matteo\Documents\Visual Studio 2015\Projects\LatexDocument\LatexDocumentExample\bin\Release\LatexDocument.dll
+C:\Users\Matteo\Documents\Visual Studio 2015\Projects\LatexDocument\LatexDocumentExample\bin\Release\ScintillaNET.dll
+C:\Users\Matteo\Documents\Visual Studio 2015\Projects\LatexDocument\LatexDocumentExample\bin\Release\LatexDocument.pdb
+C:\Users\Matteo\Documents\Visual Studio 2015\Projects\LatexDocument\LatexDocumentExample\bin\Release\ScintillaNET.xml
+C:\Users\Matteo\Documents\Visual Studio 2015\Projects\LatexDocument\LatexDocumentExample\obj\Release\LatexDocumentExample.csprojResolveAssemblyReference.cache
+C:\Users\Matteo\Documents\Visual Studio 2015\Projects\LatexDocument\LatexDocumentExample\obj\Release\LatexDocumentExample.Form1.resources
+C:\Users\Matteo\Documents\Visual Studio 2015\Projects\LatexDocument\LatexDocumentExample\obj\Release\LatexDocumentExample.Properties.Resources.resources
+C:\Users\Matteo\Documents\Visual Studio 2015\Projects\LatexDocument\LatexDocumentExample\obj\Release\LatexDocumentExample.csproj.GenerateResource.Cache
+C:\Users\Matteo\Documents\Visual Studio 2015\Projects\LatexDocument\LatexDocumentExample\obj\Release\LatexDocumentExample.exe
+C:\Users\Matteo\Documents\Visual Studio 2015\Projects\LatexDocument\LatexDocumentExample\obj\Release\LatexDocumentExample.pdb

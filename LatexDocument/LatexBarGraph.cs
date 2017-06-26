@@ -6,6 +6,11 @@ namespace LatexDocument
         List<LatexGraphValue> values;
 
         /// <summary>
+        /// Specify if the graph should be centered
+        /// </summary>
+        public bool Centered { get; set; }
+
+        /// <summary>
         /// Fill color of the bar graph
         /// </summary>
         public string BarColor { get; private set; }
@@ -13,26 +18,16 @@ namespace LatexDocument
         /// <summary>
         /// Instantiates a new LatexBarGraph object
         /// </summary>
-        /// <param name="Values">Values to be added in the graph</param>
-        public LatexBarGraph(List<LatexGraphValue> Values)
-        {
-            values = new List<LatexGraphValue>();
-            values.AddRange(Values);
-
-            BarColor = "blue";
-        }
-
-        /// <summary>
-        /// Instantiates a new LatexBarGraph object
-        /// </summary>
         /// <param name="Values">Values to be added in the graph<</param>
         /// <param name="BarColor">Fill color of the bar graph</param>
-        public LatexBarGraph(List<LatexGraphValue> Values, string BarColor)
+        /// <param name="Centered">Specify if the graph should be centered</param>
+        public LatexBarGraph(List<LatexGraphValue> Values, string BarColor = "blue", bool Centered = true)
         {
             values = new List<LatexGraphValue>();
             values.AddRange(Values);
 
             this.BarColor = BarColor;
+            this.Centered = Centered;
         }
         
         /// <summary>

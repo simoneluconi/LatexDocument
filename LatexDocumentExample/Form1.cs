@@ -53,9 +53,13 @@ namespace LatexDocumentExample
             lt.Add(new LatexText("Italix text, ", LatexText.TEXT_ITALIC));
             lt.Add(new LatexText("UnderLine text", LatexText.TEXT_UNDERLINE));
 
+            lt.Font = "cmss";
+
             LatexImage img2 = new LatexImage(@"C:\Users\Matteo\Desktop\Giugno 2017\sfondo1.jpg");
             lt.Add(img2);
-            lt.Add(new LatexParagraph(LoremIpsum));
+            lt.Add(new LatexParagraph("Change Font: Computer Modern Sans Serif", LoremIpsum));
+
+            lt.Font = LatexDocument.Document.DEFAULT_FONT;
 
             lt.NewPage();
             lt.Add(new LatexTextTitle("Formulas", LatexTextTitle.Huge));
@@ -132,7 +136,6 @@ namespace LatexDocumentExample
             LatexPieGraph graph = new LatexPieGraph(datas);
             lt.Add(graph);
 
-            lt.NewLine();
             lt.Add(new LatexTextTitle("Bar Graph", LatexTextTitle.LARGE));
             lt.NewLine();
 
