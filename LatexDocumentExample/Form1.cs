@@ -44,14 +44,32 @@ namespace LatexDocumentExample
             LatexPageTitle title = new LatexPageTitle("Test File", "Simone Luconi", "18 Giugno 2017");
             lt.Add(title);
 
-            lt.Add(new LatexTextTitle("Big Title", LatexTextTitle.Huge));
+            LatexFont font = new LatexFont();
+            font.Size = LatexFont.TEXT_Huge;
+
+            lt.Add(new LatexTextTitle("Big Title", font));
             LatexImage img = new LatexImage(@"C:\Users\Matteo\Desktop\Giugno 2017\sfondo1.jpg", "Test Image");
             lt.Add(img);
-            lt.Add(new LatexParagraph("Text", LoremIpsum));
+
+            font.Color = "blue";
+
+            lt.Add(new LatexParagraph("Blue paragraph", LoremIpsum, font));
             lt.NewLine();
-            lt.Add(new LatexText("Bold text, ", LatexText.TEXT_BOLD));
-            lt.Add(new LatexText("Italix text, ", LatexText.TEXT_ITALIC));
-            lt.Add(new LatexText("UnderLine text", LatexText.TEXT_UNDERLINE));
+
+            font.Color = null;
+            font.Type = LatexFont.TEXT_BOLD;
+
+            lt.Add(new LatexText("Bold text, ", font));
+
+            font.Type = LatexFont.TEXT_ITALIC;
+            lt.Add(new LatexText("Italix text, ", font));
+
+            font.Type = LatexFont.TEXT_UNDERLINE;
+            lt.Add(new LatexText("UnderLine text", font));
+
+            font.Type = null;
+            font.Color = "red";
+            lt.Add(new LatexText("Red text", font));
 
             lt.Font = "cmss";
 
@@ -62,7 +80,11 @@ namespace LatexDocumentExample
             lt.Font = LatexDocument.Document.DEFAULT_FONT;
 
             lt.NewPage();
-            lt.Add(new LatexTextTitle("Formulas", LatexTextTitle.Huge));
+
+            font.Size = LatexFont.TEXT_Huge;
+            font.Color = "red";
+
+            lt.Add(new LatexTextTitle("Formulas (red title)", font));
             lt.AddMath(@"\lim_{x \to \infty} \exp(-x) = 0");
             lt.NewLine();
             lt.AddMath(@"\frac{n!}{k!(n-k)!} = \binom{n}{k}");
@@ -70,7 +92,9 @@ namespace LatexDocumentExample
             lt.AddMath(@"\cos (2\theta) = \cos^2 \theta - \sin^2 \theta");
 
             lt.NewLine(); lt.NewLine();
-            lt.Add(new LatexTextTitle("Table", LatexTextTitle.Huge));
+
+            font.Color = null;
+            lt.Add(new LatexTextTitle("Table", font));
             lt.NewLine();
             string[,] elements = new string[3, 3];
 
@@ -91,13 +115,13 @@ namespace LatexDocumentExample
             lt.Add(new LatexParagraph(LoremIpsum));
 
             lt.NewLine(); lt.NewLine();
-            lt.Add(new LatexTextTitle("Table (no borders) Wrapped", LatexTextTitle.Huge));
+            lt.Add(new LatexTextTitle("Table (no borders) Wrapped", font));
 
             lt.Add(new LatexTable(elements, false, true));
             lt.Add(new LatexParagraph(LoremIpsum));
             lt.NewPage();
 
-            lt.Add(new LatexTextTitle("Bullet List", LatexTextTitle.Huge));
+            lt.Add(new LatexTextTitle("Bullet List", font));
 
             List<string> items = new List<string>();
             items.Add("Pizza");
@@ -107,11 +131,11 @@ namespace LatexDocumentExample
 
             lt.Add(new LatexList(LatexList.BULLET, items));
 
-            lt.Add(new LatexTextTitle("Enumerate List", LatexTextTitle.Huge));
+            lt.Add(new LatexTextTitle("Enumerate List", font));
 
             lt.Add(new LatexList(LatexList.ENUMERATE, items));
 
-            lt.Add(new LatexTextTitle("Descriptive List", LatexTextTitle.Huge));
+            lt.Add(new LatexTextTitle("Descriptive List", font));
 
             Dictionary<string, string> desc = new Dictionary<string, string>();
             desc.Add("Pizza", LoremIpsum.Substring(0, 175));
@@ -125,7 +149,7 @@ namespace LatexDocumentExample
             lt.Add(new LatexText(LoremIpsum.Substring(0, 275)));
             lt.NewLine();
 
-            lt.Add(new LatexTextTitle("Pie Graph", LatexTextTitle.LARGE));
+            lt.Add(new LatexTextTitle("Pie Graph", font));
             lt.NewLine();
             List<LatexGraphValue> datas = new List<LatexGraphValue>();
             datas.Add(new LatexGraphValue(10, "Pizza", "red"));
@@ -136,7 +160,7 @@ namespace LatexDocumentExample
             LatexPieGraph graph = new LatexPieGraph(datas);
             lt.Add(graph);
 
-            lt.Add(new LatexTextTitle("Bar Graph", LatexTextTitle.LARGE));
+            lt.Add(new LatexTextTitle("Bar Graph", font));
             lt.NewLine();
 
             LatexBarGraph graph2 = new LatexBarGraph(datas);
@@ -188,6 +212,5 @@ namespace LatexDocumentExample
         {
             lt.RecreateDocument(TextArea.Text);
         }
-
     }
 }

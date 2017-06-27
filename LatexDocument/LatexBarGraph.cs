@@ -29,7 +29,7 @@ namespace LatexDocument
             this.BarColor = BarColor;
             this.Centered = Centered;
         }
-        
+
         /// <summary>
         /// Data of the graph
         /// </summary>

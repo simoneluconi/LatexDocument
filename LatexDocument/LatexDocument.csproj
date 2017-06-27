@@ -44,6 +44,7 @@
     <Compile Include="LatexBarGraph.cs" />
     <Compile Include="LatexColumns.cs" />
     <Compile Include="LatexDocumentMargins.cs" />
+    <Compile Include="LatexFont.cs" />
     <Compile Include="LatexGraphValue.cs" />
     <Compile Include="LatexImage.cs" />
     <Compile Include="LatexList.cs" />
