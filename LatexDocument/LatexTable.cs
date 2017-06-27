@@ -23,11 +23,11 @@
         /// <param name="Elements">Matrix of elements to be added in the table</param>
         /// <param name="Borders">Show table borders</param>
         /// <param name="Wrap">Wrap table in the text</param>
-        public LatexTable(string [,] Elements, bool Borders = true, bool Wrap = false)
+        public LatexTable(string[,] Elements, bool Borders = true, bool Wrap = false)
         {
             this.Elements = Elements;
             this.Borders = Borders;
             this.Wrap = Wrap;
-        }        
+        }
     }
 }

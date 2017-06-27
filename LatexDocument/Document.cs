@@ -51,7 +51,7 @@ namespace LatexDocument
         /// <summary>
         /// Inizialize the LaTeX Document
         /// </summary>
-        /// <param name="LaTeXExecutaPath">Path to the LaTeX Compiler Executable</param>
+        /// <param name="LaTeXExecutable">Path to the LaTeX Compiler Executable</param>
         /// <param name="FileFolder">Path to the folder to work with</param>
         /// <param name="Margins">Document Margin in inch</param>
         /// <param name="LatexPackages">Packages to be added in the document</param>
@@ -64,6 +64,11 @@ namespace LatexDocument
             this.LatexPackages.AddRange(LatexPackages);
 
             if (!Directory.Exists(FileFolder)) Directory.CreateDirectory(FileFolder);
+            if (!File.Exists(LaTeXExecutable))
+                throw new Exception("The LaTeX executable doesen't exist!");
+            if (!LaTeXExecutable.EndsWith(".exe"))
+                throw new Exception("The selected LaTeX executable is not an executable!");
+
             LATEX_EXECUTABLE = LaTeXExecutable;
             FILE_FOLDER = FileFolder;
             IMAGE_FOLDER = Path.Combine(FILE_FOLDER, @"images\");
@@ -85,13 +90,14 @@ namespace LatexDocument
             sb.AppendLine(@"\usepackage{pgfplots}");
             sb.AppendLine(@"\usepackage{wrapfig}");
             sb.AppendLine(@"\usepackage{mathtools}");
+            sb.AppendLine(@"\usepackage{color}");
             sb.AppendLine(@"\pgfplotsset{compat=1.15}");
             sb.AppendLine(@"\usepackage{lipsum}");
             sb.AppendLine(string.Format(@"\usepackage[tmargin={0}in,bmargin={1}in,lmargin={2}in,rmargin={3}in]", Margins.Top, Margins.Bottom, Margins.Right, Margins.Left) + @"{geometry}");
 
             foreach (string package in LatexPackages)
             {
-                sb.AppendLine(package);
+                sb.AppendLine(string.Format(@"\usepackage{{{0}}}", package));
             }
 
             sb.AppendLine(@"\begin{document}");
@@ -114,7 +120,8 @@ namespace LatexDocument
                     _font = value;
                     sb.AppendLine(string.Format(@"\fontfamily{{{0}}}", value));
                     sb.AppendLine(@"\selectfont");
-                } else
+                }
+                else
                 {
                     _font = "garamond";
                     sb.AppendLine(string.Format(@"\fontfamily{{{0}}}", "garamond"));
@@ -132,7 +139,7 @@ namespace LatexDocument
         }
 
         /// <summary>
-        /// End a container with the center align
+        /// End a container for the align
         /// </summary>
         public void EndAlign()
         {
@@ -164,9 +171,23 @@ namespace LatexDocument
         /// <param name="text">LatexText object to be added to the document</param>
         public void Add(LatexText text)
         {
-            if (text.Format == null)
+            if (text.Font.Color == null && text.Font.Type == null)
+            {
                 sb.AppendLine(text.Text);
-            else sb.AppendLine(string.Format(text.Format, text.Text));
+            }
+            else if (text.Font.Type != null && text.Font.Color == null)
+            {
+                sb.AppendLine(string.Format(text.Font.Type, text.Text));
+            }
+            else if (text.Font.Type == null && text.Font.Color != null)
+            {
+                sb.AppendLine(string.Format(@"\textcolor{{{0}}}{{{1}}}", text.Font.Color, text.Text));
+            }
+            else if (text.Font.Type != null && text.Font.Color != null)
+            {
+                sb.AppendLine(string.Format(@"\textcolor{{{0}}}{{{1}}}", text.Font.Color, string.Format(text.Font.Type, text.Text)));
+            }
+            else throw new Exception("Can't establish formatting");
         }
 
         /// <summary>
@@ -176,7 +197,9 @@ namespace LatexDocument
         public void Add(LatexParagraph Paragraph)
         {
             sb.AppendLine(string.Format(@"\paragraph{{{0}}}", Paragraph.Heading));
-            sb.AppendLine(Paragraph.Text);
+            if (Paragraph.Font.Color == null)
+                sb.AppendLine(Paragraph.Text);
+            else Add(new LatexText(Paragraph.Text, Paragraph.Font));
         }
 
         /// <summary>
@@ -234,14 +257,23 @@ namespace LatexDocument
         /// <param name="Title">LatexTextTitle object to be added to the document</param>
         public void Add(LatexTextTitle Title)
         {
-            if (Title.Size == null)
+            if (Title.Font.Size == null && Title.Font.Color == null)
             {
                 Add(new LatexText(Title.Text));
             }
-            else
+            else if (Title.Font.Size == null && Title.Font.Color != null)
             {
-                sb.AppendLine(@"{" + Title.Size + " " + Title.Text + "}");
+                Add(new LatexText(Title.Text, Title.Font));
             }
+            else if (Title.Font.Size != null && Title.Font.Color == null)
+            {
+                sb.AppendLine(@"{" + Title.Font.Size + " " + Title.Text + "}");
+            }
+            else if (Title.Font.Size != null && Title.Font.Color != null)
+            {
+                sb.AppendLine(string.Format(@"\textcolor{{{0}}}{{{1}}}", Title.Font.Color, @"{" + Title.Font.Size + " " + Title.Text + "}"));
+            }
+            else throw new Exception("Can't establish formatting");
 
             NewLine();
         }
@@ -499,7 +531,7 @@ namespace LatexDocument
             else if (obj is LatexTable)
                 Add(obj as LatexTable);
 
-            else throw new ArgumentException("Can't add non-Latex object", obj.GetType().Name);
+            else throw new ArgumentException("Can't add non-Latex object. (" + obj.GetType().Name + ")");
         }
 
         /// <summary>
