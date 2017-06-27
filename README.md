@@ -7,4 +7,4 @@ This is a simple C# Library, i hope that with your help it will became even bett
 - [Test.pdf](https://github.com/simoneluconi/LatexDocument/blob/master/LatexDocumentExample/bin/Debug/Test.pdf)
 
 ## Download:
-- [LatexDocument Release v1.0](https://github.com/simoneluconi/LatexDocument/releases/tag/1.0)
+- [LatexDocument Lastest Release](https://github.com/simoneluconi/LatexDocument/releases/latest)
