@@ -11,4 +11,3 @@ C:\Users\Matteo\Documents\Visual Studio 2015\Projects\LatexDocument\LatexDocumen
 C:\Users\Matteo\Documents\Visual Studio 2015\Projects\LatexDocument\LatexDocument\bin\Debug\LatexDocument.pdb
 C:\Users\Matteo\Documents\Visual Studio 2015\Projects\LatexDocument\LatexDocument\obj\Debug\LatexDocument.dll
 C:\Users\Matteo\Documents\Visual Studio 2015\Projects\LatexDocument\LatexDocument\obj\Debug\LatexDocument.pdb
-C:\Users\Matteo\Documents\Visual Studio 2015\Projects\LatexDocument\LatexDocument\obj\Debug\LatexDocument.csprojResolveAssemblyReference.cache
