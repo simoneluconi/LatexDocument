@@ -125,8 +125,8 @@ namespace LatexDocument
                 }
                 else
                 {
-                    _font = "garamond";
-                    sb.AppendLine(string.Format(@"\fontfamily{{{0}}}", "garamond"));
+                    _font = DEFAULT_FONT;
+                    sb.AppendLine(string.Format(@"\fontfamily{{{0}}}", _font));
                     sb.AppendLine(@"\selectfont");
                 }
             }
@@ -149,10 +149,11 @@ namespace LatexDocument
         }
 
         /// <summary>
-        /// Add a LatexPageTitle object to the document
+        /// Add a LatexPageTitle object in the document
         /// </summary>
-        /// <param name="Title">LatexPageTitle object to be added to the document</param>
-        public void Add(LatexPageTitle Title)
+        /// <param name="Title">LatexPageTitle object to be added in the document</param>
+        /// <param name="CreateNewPage">Add the title in a new page</param>
+        public void Add(LatexPageTitle Title, bool CreateNewPage = true)
         {
             sb.AppendLine(string.Format(@"\title{{{0}}}", Title.Title));
 
@@ -164,13 +165,14 @@ namespace LatexDocument
 
             sb.AppendLine(@"\maketitle");
 
-            NewPage();
+            if (CreateNewPage)
+                NewPage();
         }
 
         /// <summary>
-        /// Add a LatexText object to the document
+        /// Add a LatexText object in the document
         /// </summary>
-        /// <param name="text">LatexText object to be added to the document</param>
+        /// <param name="text">LatexText object to be added in the document</param>
         public void Add(LatexText text)
         {
             if (text.Font.Color == null && text.Font.Type == null)
@@ -193,9 +195,9 @@ namespace LatexDocument
         }
 
         /// <summary>
-        /// Add a LatexParagraph object to the document
+        /// Add a LatexParagraph object in the document
         /// </summary>
-        /// <param name="Paragraph">LatexParagraph object to be added to the document</param>
+        /// <param name="Paragraph">LatexParagraph object to be added in the document</param>
         public void Add(LatexParagraph Paragraph)
         {
             sb.AppendLine(string.Format(@"\paragraph{{{0}}}", Paragraph.Heading));
@@ -205,9 +207,9 @@ namespace LatexDocument
         }
 
         /// <summary>
-        /// Add a LatexList object to the document
+        /// Add a LatexList object in the document
         /// </summary>
-        /// <param name="List">LatexList object to be added to the document</param>
+        /// <param name="List">LatexList object to be added in the document</param>
         public void Add(LatexList List)
         {
             sb.AppendLine(string.Format(@"\begin{{{0}}}", List.Type));
@@ -231,9 +233,9 @@ namespace LatexDocument
         }
 
         /// <summary>
-        /// Add a LatexImage object to the document
+        /// Add a LatexImage object in the document
         /// </summary>
-        /// <param name="Image">LatexImage object to be added to the document</param>
+        /// <param name="Image">LatexImage object to be added in the document</param>
         public void Add(LatexImage Image)
         {
             string FileName = Path.GetFileName(Image.Path);
@@ -254,9 +256,9 @@ namespace LatexDocument
         }
 
         /// <summary>
-        /// Add a LatexTextTitle object to the document
+        /// Add a LatexTextTitle object in the document
         /// </summary>
-        /// <param name="Title">LatexTextTitle object to be added to the document</param>
+        /// <param name="Title">LatexTextTitle object to be added in the document</param>
         public void Add(LatexTextTitle Title)
         {
             if (Title.Font.Size == null && Title.Font.Color == null)
@@ -281,9 +283,9 @@ namespace LatexDocument
         }
 
         /// <summary>
-        /// Add a LatexColumns object to the document
+        /// Add a LatexColumns object in the document
         /// </summary>
-        /// <param name="Columns">LatexColumns object to be added to the document</param>
+        /// <param name="Columns">LatexColumns object to be added in the document</param>
         public void Add(LatexColumns Columns)
         {
             List<object> objects = Columns.Objects;
@@ -298,9 +300,9 @@ namespace LatexDocument
         }
 
         /// <summary>
-        /// Add a LatexTable object to the document
+        /// Add a LatexTable object in the document
         /// </summary>
-        /// <param name="Table">LatexTable object to be added to the document</param>
+        /// <param name="Table">LatexTable object to be added in the document</param>
         public void Add(LatexTable Table)
         {
             if (Table.Wrap)
@@ -337,9 +339,9 @@ namespace LatexDocument
         }
 
         /// <summary>
-        /// Add a LatexPieGraph object to the document
+        /// Add a LatexPieGraph object in the document
         /// </summary>
-        /// <param name="Graph">LatexPieGraph object to be added to the document</param>
+        /// <param name="Graph">LatexPieGraph object to be added in the document</param>
         public void Add(LatexPieGraph Graph)
         {
             if (Graph.Centered)
@@ -379,9 +381,9 @@ namespace LatexDocument
         }
 
         /// <summary>
-        /// Add a LatexBarGraph object to the document
+        /// Add a LatexBarGraph object in the document
         /// </summary>
-        /// <param name="Graph">LatexBarGraph object to be added to the document</param>
+        /// <param name="Graph">LatexBarGraph object to be added in the document</param>
         public void Add(LatexBarGraph Graph)
         {
             if (Graph.Centered)
@@ -414,9 +416,9 @@ namespace LatexDocument
         }
 
         /// <summary>
-        /// Add a LatexPlotGraph object to the document
+        /// Add a LatexPlotGraph object in the document
         /// </summary>
-        /// <param name="Graph">LatexPlotGraph object to be added to the document</param>
+        /// <param name="Graph">LatexPlotGraph object to be added in the document</param>
         public void Add(LatexPlotGraph Graph)
         {
             if (Graph.Centered)
@@ -491,9 +493,9 @@ namespace LatexDocument
         }
 
         /// <summary>
-        /// Add Raw Text to the document
+        /// Add Raw Text in the document
         /// </summary>
-        /// <param name="Text">Text to append to the document</param>
+        /// <param name="Text">Text to append in the document</param>
         public void AddRawText(string Text)
         {
             sb.AppendLine(Text);
@@ -523,7 +525,6 @@ namespace LatexDocument
             sb.AppendLine(@"\vfill");
         }
 
-
         /// <summary>
         /// Create Tex output
         /// </summary>
@@ -531,11 +532,11 @@ namespace LatexDocument
         {
             CreateLatex(string.Format("{0}", DateTime.Now.ToString("yyMMdd-hhmmss")));
         }
-        
+
         /// <summary>
         /// Create Tex Output
         /// </summary>
-        /// <param name="FileName">Output File Name (no extension)</param>
+        /// <param name="FileName">Output file name without extension</param>
         public void CreateLatex(string FileName)
         {
             EndDocument();
@@ -557,7 +558,7 @@ namespace LatexDocument
         /// <summary>
         /// Create PDF output
         /// </summary>
-        /// <param name="FileName">Output File Name (no extension)</param>
+        /// <param name="FileName">Output file name without extension</param>
         public void CreatePdf(string FileName, bool OpenAfterCompile = false)
         {
             string FilePath = Path.Combine(FILE_FOLDER, string.Format("{0}.tex", FileName));
