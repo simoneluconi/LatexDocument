@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Windows;
 using System.IO;
 using System.Text;
 
@@ -88,6 +89,7 @@ namespace LatexDocument
             sb.AppendLine(@"\usepackage{multicol}");
             sb.AppendLine(@"\usepackage{pgf-pie}");
             sb.AppendLine(@"\usepackage{pgfplots}");
+            sb.AppendLine(@"\usepackage{tikz}");
             sb.AppendLine(@"\usepackage{wrapfig}");
             sb.AppendLine(@"\usepackage{mathtools}");
             sb.AppendLine(@"\usepackage{color}");
@@ -412,6 +414,74 @@ namespace LatexDocument
         }
 
         /// <summary>
+        /// Add a LatexPlotGraph object to the document
+        /// </summary>
+        /// <param name="Graph">LatexPlotGraph object to be added to the document</param>
+        public void Add(LatexPlotGraph Graph)
+        {
+            if (Graph.Centered)
+                StartCenterAlign();
+
+            sb.AppendLine(@"\begin{tikzpicture}");
+            sb.AppendLine(@"\begin{axis}[");
+            if (Graph.Title != null)
+                sb.AppendLine(string.Format(@"title={{{0}}},", Graph.Title));
+            if (Graph.XLabel != null)
+                sb.AppendLine(string.Format(@"xlabel={{{0}}},", Graph.XLabel));
+            if (Graph.YLabel != null)
+                sb.AppendLine(string.Format(@"ylabel={{{0}}},", Graph.YLabel));
+            if (Graph.XMin != 0 && Graph.XMax != 0)
+                sb.AppendLine(string.Format(@"xmin={0}, xmax={1},", Graph.XMin, Graph.XMax));
+            if (Graph.YMin != 0 && Graph.YMax != 0)
+                sb.AppendLine(string.Format(@"ymin={0}, ymax={1},", Graph.YMin, Graph.YMax));
+            if (Graph.XTick != null)
+                sb.AppendLine(string.Format(@"xtick={{{0}}},", string.Join(",", Graph.XTick)));
+            if (Graph.YTick != null)
+                sb.AppendLine(string.Format(@"ytick={{{0}}},", string.Join(",", Graph.YTick)));
+            if (Graph.LegendPosition != null)
+                sb.AppendLine(string.Format(@"legend pos={0},", Graph.LegendPosition));
+            sb.AppendLine(string.Format(@"ymajorgrids = {0},", Graph.YMajorGrids.ToString().ToLower()));
+            sb.AppendLine(string.Format(@"xmajorgrids = {0},", Graph.XMajorGrids.ToString().ToLower()));
+            if (Graph.GridStyle != null)
+                sb.AppendLine(string.Format(@"grid style = {0}", Graph.GridStyle));
+            sb.AppendLine("]");
+
+            foreach (LatexPlot plot in Graph.Plots)
+            {
+                sb.AppendLine(@"\addplot[");
+                if (plot.LineColor != null)
+                    sb.AppendLine(string.Format(@"color = {0},", plot.LineColor));
+                if (plot.MarksStyle != null)
+                    sb.AppendLine(string.Format(@"mark = {0},", plot.MarksStyle));
+                sb.AppendLine("]");
+
+                if (plot.Coordinates != null)
+                {
+                    sb.AppendLine(@"coordinates {");
+
+                    foreach (Point p in plot.Coordinates)
+                    {
+                        sb.AppendFormat("({0},{1})", p.X, p.Y);
+                    }
+
+                    sb.AppendLine();
+                    sb.AppendLine("};");
+                }
+                else if (plot.Expression != null)
+                {
+                    sb.AppendLine(string.Format(@"{{{0}}};", plot.Expression));
+                }
+                sb.AppendLine(string.Format(@"\addlegendentry{{{0}}}", plot.Legend));
+            }
+
+            sb.AppendLine(@"\end{axis}");
+            sb.AppendLine(@"\end{tikzpicture}");
+
+            if (Graph.Centered)
+                EndAlign();
+        }
+
+        /// <summary>
         /// Escape the Math with $
         /// </summary>
         /// <param name="Text">Math Syntax</param>
@@ -453,32 +523,52 @@ namespace LatexDocument
             sb.AppendLine(@"\vfill");
         }
 
+
+        /// <summary>
+        /// Create Tex output
+        /// </summary>
+        public void CreateLatex()
+        {
+            CreateLatex(string.Format("{0}", DateTime.Now.ToString("yyMMdd-hhmmss")));
+        }
+        
+        /// <summary>
+        /// Create Tex Output
+        /// </summary>
+        /// <param name="FileName">Output File Name (no extension)</param>
+        public void CreateLatex(string FileName)
+        {
+            EndDocument();
+
+            string FilePath = Path.Combine(FILE_FOLDER, string.Format("{0}.tex", FileName));
+            StreamWriter sw = new StreamWriter(FilePath);
+            sw.Write(sb.ToString());
+            sw.Close();
+        }
+
         /// <summary>
         /// Create PDF output
         /// </summary>
         public void CreatePdf()
         {
-            CreatePdf(string.Format("{0}.pdf", DateTime.Now.ToString("yyMMdd-hhmmss")));
+            CreatePdf(string.Format("{0}", DateTime.Now.ToString("yyMMdd-hhmmss")));
         }
 
         /// <summary>
         /// Create PDF output
         /// </summary>
         /// <param name="FileName">Output File Name (no extension)</param>
-        public void CreatePdf(string FileName)
+        public void CreatePdf(string FileName, bool OpenAfterCompile = false)
         {
-            EndDocument();
             string FilePath = Path.Combine(FILE_FOLDER, string.Format("{0}.tex", FileName));
-            StreamWriter sw = new StreamWriter(FilePath);
-            sw.Write(sb.ToString());
-            sw.Close();
+            CreateLatex(FileName);
 
             Process p = Process.Start(LATEX_EXECUTABLE, string.Format("-aux-directory={0} -output-directory={1} {2}", FILE_FOLDER, FILE_FOLDER, FilePath));
             p.WaitForExit();
 
             Debug.WriteLine("Compiler Exit Code: " + p.ExitCode);
 
-            if (p.ExitCode == 0)
+            if (p.ExitCode == 0 && OpenAfterCompile)
                 Process.Start(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Path.Combine(FILE_FOLDER, string.Format("{0}.pdf", FileName))));
         }
 
@@ -530,6 +620,9 @@ namespace LatexDocument
 
             else if (obj is LatexTable)
                 Add(obj as LatexTable);
+
+            else if (obj is LatexPlotGraph)
+                Add(obj as LatexPlotGraph);
 
             else throw new ArgumentException("Can't add non-Latex object. (" + obj.GetType().Name + ")");
         }

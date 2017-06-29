@@ -2,3 +2,4 @@ C:\Users\Matteo\Documents\Visual Studio 2015\Projects\LatexDocument\LatexDocumen
 C:\Users\Matteo\Documents\Visual Studio 2015\Projects\LatexDocument\LatexDocument\bin\Release\LatexDocument.pdb
 C:\Users\Matteo\Documents\Visual Studio 2015\Projects\LatexDocument\LatexDocument\obj\Release\LatexDocument.dll
 C:\Users\Matteo\Documents\Visual Studio 2015\Projects\LatexDocument\LatexDocument\obj\Release\LatexDocument.pdb
+C:\Users\Matteo\Documents\Visual Studio 2015\Projects\LatexDocument\LatexDocument\obj\Release\LatexDocument.csprojResolveAssemblyReference.cache
