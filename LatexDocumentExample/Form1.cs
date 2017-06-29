@@ -147,9 +147,6 @@ namespace LatexDocumentExample
             lt.Add(new LatexList(desc));
             lt.NewPage();
 
-            lt.Add(new LatexText(LoremIpsum.Substring(0, 275)));
-            lt.NewLine();
-
             lt.Add(new LatexTextTitle("Pie Graph", font));
             lt.NewLine();
             List<LatexGraphValue> datas = new List<LatexGraphValue>();
@@ -167,6 +164,9 @@ namespace LatexDocumentExample
             LatexBarGraph graph2 = new LatexBarGraph(datas);
             lt.Add(graph2);
 
+            lt.NewPage();
+            font.Size = LatexFont.TEXT_Huge;
+            lt.Add(new LatexTextTitle("Coordinates Graph", font));
             LatexPlotGraph plotGraph = new LatexPlotGraph();
             plotGraph.Title = @"Temperature dependence of CuSO$_4\cdot$5H$_2$O solubility";
             plotGraph.XLabel = "Temperature in celsius";
@@ -203,6 +203,7 @@ namespace LatexDocumentExample
 
             lt.Add(plotGraph);
 
+            lt.Add(new LatexTextTitle("Math Graph", font));
             LatexPlotGraph plotGraph2 = new LatexPlotGraph();
 
             LatexPlot plot2 = new LatexPlot();
