@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using LatexDocument;
-using System.Drawing;
 using ScintillaNET;
+using System.Windows;
+using System.Drawing;
 
 namespace LatexDocumentExample
 {
@@ -21,7 +22,7 @@ namespace LatexDocumentExample
 
         private void btnCompile_Click(object sender, EventArgs e)
         {
-            lt.CreatePdf("Test");
+            lt.CreatePdf("Test", true);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -62,7 +63,7 @@ namespace LatexDocumentExample
             lt.Add(new LatexText("Bold text, ", font));
 
             font.Type = LatexFont.TEXT_ITALIC;
-            lt.Add(new LatexText("Italix text, ", font));
+            lt.Add(new LatexText("Italic text, ", font));
 
             font.Type = LatexFont.TEXT_UNDERLINE;
             lt.Add(new LatexText("UnderLine text", font));
@@ -166,6 +167,58 @@ namespace LatexDocumentExample
             LatexBarGraph graph2 = new LatexBarGraph(datas);
             lt.Add(graph2);
 
+            LatexPlotGraph plotGraph = new LatexPlotGraph();
+            plotGraph.Title = @"Temperature dependence of CuSO$_4\cdot$5H$_2$O solubility";
+            plotGraph.XLabel = "Temperature in celsius";
+            plotGraph.YLabel = "Solubility[g per 100 g water]";
+            plotGraph.XMin = 0;
+            plotGraph.XMax = 100;
+            plotGraph.YMin = 0;
+            plotGraph.YMax = 100;
+            plotGraph.XTick = new int[] { 0, 20, 40, 60, 80, 100 };
+            plotGraph.YTick = new int[] { 0, 20, 40, 60, 80, 100, 120 };
+            plotGraph.LegendPosition = "north west";
+            plotGraph.YMajorGrids = true;
+            plotGraph.GridStyle = "dashed";
+
+            LatexPlot plot = new LatexPlot();
+
+            plot.LineColor = "blue";
+            plot.MarksStyle = "square";
+
+            System.Windows.Point[] coordinates = new System.Windows.Point[8];
+            coordinates[0] = new System.Windows.Point(0, 23.1);
+            coordinates[1] = new System.Windows.Point(10, 27.5);
+            coordinates[2] = new System.Windows.Point(20, 32);
+            coordinates[3] = new System.Windows.Point(30, 37.8);
+            coordinates[4] = new System.Windows.Point(40, 44.6);
+            coordinates[5] = new System.Windows.Point(60, 61.8);
+            coordinates[6] = new System.Windows.Point(80, 83.8);
+            coordinates[7] = new System.Windows.Point(100, 114);
+
+            plot.Coordinates = coordinates;
+            plot.Legend = @"CuSO$_4\cdot$5H$_2$O";
+
+            plotGraph.Plots = new LatexPlot[] { plot };
+
+            lt.Add(plotGraph);
+
+            LatexPlotGraph plotGraph2 = new LatexPlotGraph();
+
+            LatexPlot plot2 = new LatexPlot();
+            plot2.LineColor = "red";
+            plot2.Expression = "x^2 - 2*x - 1";
+            plot2.Legend = "$x^2 - 2*x - 1$";
+
+            LatexPlot plot3 = new LatexPlot();
+            plot3.LineColor = "blue";
+            plot3.Expression = "x^2 + 2*x + 1";
+            plot3.Legend = "$x^2 + 2*x + 1$";
+
+            plotGraph2.Plots = new LatexPlot[] { plot2, plot3};
+
+            lt.Add(plotGraph2);
+
             TextArea.Text = lt.ToString();
         }
 
@@ -191,10 +244,10 @@ namespace LatexDocumentExample
         private void InitNumberMargin()
         {
 
-            TextArea.Styles[Style.LineNumber].BackColor = IntToColor(BACK_COLOR);
-            TextArea.Styles[Style.LineNumber].ForeColor = IntToColor(FORE_COLOR);
-            TextArea.Styles[Style.IndentGuide].ForeColor = IntToColor(FORE_COLOR);
-            TextArea.Styles[Style.IndentGuide].BackColor = IntToColor(BACK_COLOR);
+            TextArea.Styles[ScintillaNET.Style.LineNumber].BackColor = IntToColor(BACK_COLOR);
+            TextArea.Styles[ScintillaNET.Style.LineNumber].ForeColor = IntToColor(FORE_COLOR);
+            TextArea.Styles[ScintillaNET.Style.IndentGuide].ForeColor = IntToColor(FORE_COLOR);
+            TextArea.Styles[ScintillaNET.Style.IndentGuide].BackColor = IntToColor(BACK_COLOR);
 
             var nums = TextArea.Margins[NUMBER_MARGIN];
             nums.Width = 30;
