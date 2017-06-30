@@ -73,8 +73,14 @@
         public bool Centered { get; set; }
 
         /// <summary>
-        /// Add a math expression. All other properties will be ignored.
+        /// Width of the graph in cm
         /// </summary>
+        public int Width { get; set; }
+
+        /// <summary>
+        /// Height of the graph in cm
+        /// </summary>
+        public int Height { get; set; }
 
         public LatexPlot[] Plots { get; set; }
         public LatexPlotGraph()

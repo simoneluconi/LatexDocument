@@ -26,16 +26,3 @@ C:\Users\Matteo\Documents\Visual Studio 2015\Projects\LatexDocument\LatexDocumen
 C:\Users\Matteo\Documents\Visual Studio 2015\Projects\LatexDocument\LatexDocumentExample\obj\Debug\LatexDocumentExample.Form1.resources
 C:\Users\Matteo\Documents\Visual Studio 2015\Projects\LatexDocument\LatexDocumentExample\obj\Debug\LatexDocumentExample.Properties.Resources.resources
 C:\Users\Matteo\Documents\Visual Studio 2015\Projects\LatexDocument\LatexDocumentExample\obj\Debug\LatexDocumentExample.csproj.GenerateResource.Cache
-D:\Simone Luconi\Documenti\Visual Studio 2017\Projects\LatexDocument\LatexDocumentExample\obj\Debug\LatexDocumentExample.csprojResolveAssemblyReference.cache
-D:\Simone Luconi\Documenti\Visual Studio 2017\Projects\LatexDocument\LatexDocumentExample\obj\Debug\LatexDocumentExample.Form1.resources
-D:\Simone Luconi\Documenti\Visual Studio 2017\Projects\LatexDocument\LatexDocumentExample\obj\Debug\LatexDocumentExample.Properties.Resources.resources
-D:\Simone Luconi\Documenti\Visual Studio 2017\Projects\LatexDocument\LatexDocumentExample\obj\Debug\LatexDocumentExample.csproj.GenerateResource.Cache
-D:\Simone Luconi\Documenti\Visual Studio 2017\Projects\LatexDocument\LatexDocumentExample\obj\Debug\LatexDocumentExample.exe
-D:\Simone Luconi\Documenti\Visual Studio 2017\Projects\LatexDocument\LatexDocumentExample\obj\Debug\LatexDocumentExample.pdb
-D:\Simone Luconi\Documenti\Visual Studio 2017\Projects\LatexDocument\LatexDocumentExample\bin\Debug\LatexDocumentExample.exe.config
-D:\Simone Luconi\Documenti\Visual Studio 2017\Projects\LatexDocument\LatexDocumentExample\bin\Debug\LatexDocumentExample.exe
-D:\Simone Luconi\Documenti\Visual Studio 2017\Projects\LatexDocument\LatexDocumentExample\bin\Debug\LatexDocumentExample.pdb
-D:\Simone Luconi\Documenti\Visual Studio 2017\Projects\LatexDocument\LatexDocumentExample\bin\Debug\LatexDocument.dll
-D:\Simone Luconi\Documenti\Visual Studio 2017\Projects\LatexDocument\LatexDocumentExample\bin\Debug\ScintillaNET.dll
-D:\Simone Luconi\Documenti\Visual Studio 2017\Projects\LatexDocument\LatexDocumentExample\bin\Debug\LatexDocument.pdb
-D:\Simone Luconi\Documenti\Visual Studio 2017\Projects\LatexDocument\LatexDocumentExample\bin\Debug\ScintillaNET.xml

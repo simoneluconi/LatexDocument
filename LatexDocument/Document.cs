@@ -389,6 +389,12 @@ namespace LatexDocument
 
             sb.AppendLine(@"\begin{tikzpicture}");
             sb.AppendLine(@"\begin{axis}[");
+
+            if (Graph.Height != 0)
+                sb.AppendLine(string.Format(@"height={0}cm,", Graph.Height));
+            if (Graph.Width != 0)
+                sb.AppendLine(string.Format(@"width={0}cm,", Graph.Width));
+
             sb.AppendLine(@"symbolic x coords={");
 
             List<string> AxisLabels = new List<string>();
@@ -424,6 +430,12 @@ namespace LatexDocument
 
             sb.AppendLine(@"\begin{tikzpicture}");
             sb.AppendLine(@"\begin{axis}[");
+
+            if (Graph.Height != 0)
+                sb.AppendLine(string.Format(@"height={0}cm,", Graph.Height));
+            if (Graph.Width != 0)
+                sb.AppendLine(string.Format(@"width={0}cm,", Graph.Width));
+
             if (Graph.Title != null)
                 sb.AppendLine(string.Format(@"title={{{0}}},", Graph.Title));
             if (Graph.XLabel != null)
