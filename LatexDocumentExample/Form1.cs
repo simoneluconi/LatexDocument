@@ -78,7 +78,7 @@ namespace LatexDocumentExample
             lt.Add(img2);
             lt.Add(new LatexParagraph("Change Font: Computer Modern Sans Serif", LoremIpsum));
 
-            lt.Font = LatexDocument.Document.DEFAULT_FONT;
+            lt.Font = LatexFont.DEFAULT_FONT;
 
             lt.NewPage();
 

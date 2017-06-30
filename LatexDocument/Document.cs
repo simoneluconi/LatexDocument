@@ -14,8 +14,6 @@ namespace LatexDocument
         private string LATEX_EXECUTABLE;
         private string _font;
 
-        public static string DEFAULT_FONT = "garamond";
-
         private LatexDocumentMargins Margins;
         private List<string> LatexPackages;
 
@@ -125,7 +123,7 @@ namespace LatexDocument
                 }
                 else
                 {
-                    _font = DEFAULT_FONT;
+                    _font = LatexFont.DEFAULT_FONT;
                     sb.AppendLine(string.Format(@"\fontfamily{{{0}}}", _font));
                     sb.AppendLine(@"\selectfont");
                 }

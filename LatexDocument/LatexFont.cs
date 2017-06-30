@@ -9,6 +9,11 @@ namespace LatexDocument
     public class LatexFont
     {
         /// <summary>
+        /// Default font of Latex document
+        /// </summary>
+        public static string DEFAULT_FONT = "garamond";
+
+        /// <summary>
         /// Text type Bold
         /// </summary>
         public const string TEXT_BOLD = @"\textbf{{{0}}}";
