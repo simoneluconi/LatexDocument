@@ -430,9 +430,9 @@ namespace LatexDocument
                 sb.AppendLine(string.Format(@"xlabel={{{0}}},", Graph.XLabel));
             if (Graph.YLabel != null)
                 sb.AppendLine(string.Format(@"ylabel={{{0}}},", Graph.YLabel));
-            if (Graph.XMin != 0 && Graph.XMax != 0)
+            if (Graph.XMin != 0 || Graph.XMax != 0)
                 sb.AppendLine(string.Format(@"xmin={0}, xmax={1},", Graph.XMin, Graph.XMax));
-            if (Graph.YMin != 0 && Graph.YMax != 0)
+            if (Graph.YMin != 0 || Graph.YMax != 0)
                 sb.AppendLine(string.Format(@"ymin={0}, ymax={1},", Graph.YMin, Graph.YMax));
             if (Graph.XTick != null)
                 sb.AppendLine(string.Format(@"xtick={{{0}}},", string.Join(",", Graph.XTick)));

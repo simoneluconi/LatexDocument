@@ -13,6 +13,5 @@ C:\Users\Matteo\Documents\Visual Studio 2015\Projects\LatexDocument\LatexDocumen
 C:\Users\Matteo\Documents\Visual Studio 2015\Projects\LatexDocument\LatexDocument\obj\Debug\LatexDocument.pdb
 D:\Simone Luconi\Documenti\Visual Studio 2017\Projects\LatexDocument\LatexDocument\bin\Debug\LatexDocument.dll
 D:\Simone Luconi\Documenti\Visual Studio 2017\Projects\LatexDocument\LatexDocument\bin\Debug\LatexDocument.pdb
-D:\Simone Luconi\Documenti\Visual Studio 2017\Projects\LatexDocument\LatexDocument\obj\Debug\LatexDocument.csprojResolveAssemblyReference.cache
 D:\Simone Luconi\Documenti\Visual Studio 2017\Projects\LatexDocument\LatexDocument\obj\Debug\LatexDocument.dll
 D:\Simone Luconi\Documenti\Visual Studio 2017\Projects\LatexDocument\LatexDocument\obj\Debug\LatexDocument.pdb
