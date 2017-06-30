@@ -4,6 +4,16 @@ namespace LatexDocument
     public class LatexBarGraph
     {
         List<LatexGraphValue> values;
+        
+        /// <summary>
+        /// Width of the graph in cm
+        /// </summary>
+        public int Width { get; set; }
+
+        /// <summary>
+        /// Height of the graph in cm
+        /// </summary>
+        public int Height { get; set; }
 
         /// <summary>
         /// Specify if the graph should be centered
